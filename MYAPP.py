@@ -10,7 +10,7 @@ with st.sidebar:
 
 if database == '1':
         st.write("""# Has seleccionado la base de datos 1""")
-        df = pd.read_csv('https://github.com/IgnacioRodriguez98/Monitoreo-TR/blob/main/Data/norm.csv')
+        df = pd.read_csv('https://raw.githubusercontent.com/IgnacioRodriguez98/Monitoreo-TR/main/Data/norm.csv')
         st.write(df)
 elif database == '2':
     st.write("""# Has seleccionado la base de datos 2""")
