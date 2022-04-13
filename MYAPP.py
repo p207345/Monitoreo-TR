@@ -3,6 +3,7 @@ import pandas as pd
 
 with st.sidebar:
 
+    st.write("# Variables")
     database = st.radio(
      "Base de datos",
      ('1', '2', '3'))
