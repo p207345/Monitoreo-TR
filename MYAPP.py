@@ -4,7 +4,7 @@ import pandas as pd
 with st.sidebar:
 
     database = st.radio(
-     "¿Que bases de datos quieres graficar?",
+     "# Base de datos",
      ('1', '2', '3'))
 
 if database == '1':
