@@ -1,7 +1,7 @@
 import streamlit as st
 import pandas as pd
 
-with st.sidebar
+with st.sidebar:
 
     genre = st.radio(
      "¿Que bases de datos quieres graficar?",
