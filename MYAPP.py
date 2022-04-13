@@ -1,14 +1,17 @@
 import streamlit as st
 import pandas as pd
 
-with st.sidebar:
-    st.write(""" # Calculadora
-    ## Suma""")
-    num1 = st.slider("Escoge el primer número",0.0,300.0,15.0)
-    num2 = st.slider("Escoge el segundo número",0.0,300.0,15.0)
-    st.write("La suma de esos números es:", num1+num2)
-    st.write("## Multiplicación")
-    num3 = st.number_input("Escribe el primer número")
-    num4 = st.number_input("Escribe el segundo número")
+with st.sidebar
 
-    st.write("La multiplicación de esos números es:", num3*num4)
+    genre = st.radio(
+     "¿Que bases de datos quieres graficar?",
+     ('1', '2', '3'))
+
+if genre == '1':
+     st.write("#Has seleccionado la base de datos 1")
+
+elif database == '2':
+    st.write("#Has seleccionado la base de datos 2")
+
+else:
+     st.write("#Has seleccionado la base de datos 3")
