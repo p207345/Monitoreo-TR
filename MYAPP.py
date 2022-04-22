@@ -7,13 +7,32 @@ with st.sidebar:
     database = st.radio(
      "Base de datos",
      ('1', '2', '3'))
-     
+
     C2H2 = st.checkbox("Acetileno", check)
     H2 = st.checkbox("Hidrógeno", check)
     C2H4 = st.checkbox("Etileno", check)
-    CO = st.checkbox("Monóxiod de carbono", check)
+    CO = st.checkbox("Monóxido de carbono", check)
     C2H6 = st.checkbox("Etano", check)
     CH4 = st.checkbox("Metano", check)
+if C2H2 == check and not H2,C2H4,CO,C2H6,CH4:
+    database = database["0"]
+elif C2H2 == check and H2 == check:
+    database = database["0","1"]
+elif 
+if H2 == check:
+    database = database[:,1]
+
+if C2H4 == check:
+    database = database[:,2]
+
+if CO == check:
+    database = database[:,3] 
+
+if C2H6 == check:
+    database = database[:,4]
+
+if CH4 == check:
+    database = database[:,5]
 
 
 if database == '1':
