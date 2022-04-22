@@ -22,3 +22,10 @@ else:
     st.write("""# Has seleccionado la base de datos 3""")
     df = pd.read_csv('https://raw.githubusercontent.com/IgnacioRodriguez98/Monitoreo-TR/main/Data/normJA.csv', header=None)
     st.write(df)
+
+C2H2 = st.checkbox("Acetileno", check)
+H2 = st.checkbox("Hidrógeno", check)
+C2H4 = st.checkbox("Etileno", check)
+CO = st.checkbox("Monóxiod de carbono", check)
+C2H6 = st.checkbox("Etano", check)
+CH4 = st.checkbox("Metano", check)
