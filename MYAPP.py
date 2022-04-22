@@ -8,7 +8,7 @@ with st.sidebar:
      "Base de datos",
      ('1', '2', '3'))
 
-
+    st.write("# Selecciona los gases a analizar:")
     C2H2 = st.checkbox("Acetileno", check)
     H2 = st.checkbox("Hidrógeno", check)
     C2H4 = st.checkbox("Etileno", check)
