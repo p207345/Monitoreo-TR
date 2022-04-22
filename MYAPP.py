@@ -19,7 +19,7 @@ if C2H2 == check and not H2,C2H4,CO,C2H6,CH4:
     database = database["0"]
 elif C2H2 == check and H2 == check:
     database = database["0","1"]
-elif 
+ 
 if H2 == check:
     database = database[:,1]
 
