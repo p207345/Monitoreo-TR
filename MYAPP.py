@@ -3,7 +3,7 @@ import pandas as pd
 #import matplotlib as plt
 #import time
 import plotly.express as px
-
+pip install plotly
 
 with st.sidebar:
     st.write("# Variables")
