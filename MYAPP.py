@@ -1,5 +1,5 @@
 
-pip install plotly==5.7.0
+pip install dash
 import streamlit as st
 import pandas as pd
 import plotly.express as px
