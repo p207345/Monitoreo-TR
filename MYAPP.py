@@ -1,7 +1,7 @@
 
 import streamlit as st
 import pandas as pd
-import plotly.express as px
+#import plotly.express as px
 #import matplotlib as plt
 #import time
 
@@ -86,11 +86,3 @@ ax.set_ylabel("Latitude values")
 plt.title('Demo graph for Line plots')
 plt.show()
 
-#l= pd.DataFrame()
-#k= 0
-#for i in p:
-#    l= l.append([p[i]])
-#    st.write(l)
-#    time.sleep(1)
-
-df = px.data.gapminder()
