@@ -1,8 +1,11 @@
 import streamlit as st
 import pandas as pd
+#import matplotlib as plt
+#import time
+import plotly.express as px
+
 
 with st.sidebar:
-
     st.write("# Variables")
     database = st.radio(
      "Base de datos",
@@ -15,26 +18,6 @@ with st.sidebar:
     CO = st.checkbox("Monóxido de carbono")
     C2H6 = st.checkbox("Etano")
     CH4 = st.checkbox("Metano")
-if C2H2 == check and (H2,C2H4,CO,C2H6,CH4) == False:
-    database = database["0"]
-elif C2H2 == check and H2 == check:
-    database = database["0","1"]
- 
-if H2 == check:
-    database = database[:,1]
-
-if C2H4 == check:
-    database = database[:,2]
-
-if CO == check:
-    database = database[:,3] 
-
-if C2H6 == check:
-    database = database[:,4]
-
-if CH4 == check:
-    database = database[:,5]
-
 
 if database == '1':
         st.write("""# Has seleccionado la base de datos 1""")
@@ -50,6 +33,62 @@ else:
     st.write("""# Has seleccionado la base de datos 3""")
     df = pd.read_csv('https://raw.githubusercontent.com/IgnacioRodriguez98/Monitoreo-TR/main/Data/normJA.csv', header=None)
     st.write(df)
+##################### SELECCION DE GASES ######################
 
+#with st.sidebar:
+#   st.write("# Selecciona el tamaño de la ventana:")
+#    vent= st.slider("",1,len(df))
 
+lista = []
+p= df[0]
 
+if C2H2:
+    a = df[[0,1]]
+    lista.append(a)
+
+if H2:
+    b = df[[0,2]]
+    lista.append(b)
+
+if C2H4:
+    c = df[[0,3]]
+    lista.append(c)
+
+if CO:
+    d = df[[0,4]]
+    lista.append(d)
+
+if C2H6:
+    e = df[[0,5]]
+    lista.append(e)
+
+if CH4:
+    f = df[[0,6]]
+    lista.append(f)
+
+if len(lista)> 0:
+
+    for i in lista:
+        p = pd.merge(p,i,on = 0, how='outer')
+    p.drop([0],inplace=True, axis=1)
+
+if C2H2== False |H2 == False | C2H4 == False |CO == False |C2H6 ==False |CH4 == False:
+   p="""### No hay gases seleccionados, por favor selecciona al menos uno"""
+
+st.write(p)
+
+ax =plt.gca()
+p.plot(kind='line',y="1",ax=ax,color='red')
+ax.set_xlabel("Index values")
+ax.set_ylabel("Latitude values")
+plt.title('Demo graph for Line plots')
+plt.show()
+
+#l= pd.DataFrame()
+#k= 0
+#for i in p:
+#    l= l.append([p[i]])
+#    st.write(l)
+#    time.sleep(1)
+
+df = px.data.gapminder()
