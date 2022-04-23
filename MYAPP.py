@@ -1,7 +1,8 @@
-$pip install plotly
-import plotly.express as px
+pip install plotly
+
 import streamlit as st
 import pandas as pd
+import plotly.express as px
 #import matplotlib as plt
 #import time
 
