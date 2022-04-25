@@ -90,5 +90,5 @@ db = pd.DataFrame(db)
 st.write(db)
 st.write(p)
 ############## Grafica
-fig = px.line(db,animation_frame="index",animation_group=db)
+fig = px.line(db)#,animation_frame="index",animation_group=db)
 st.write(fig)
