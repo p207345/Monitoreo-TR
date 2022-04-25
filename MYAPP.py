@@ -96,18 +96,64 @@ st.write(fig)
 #### AUTOENCODER
 from pyod.models.auto_encoder import AutoEncoder
 
-norm = Rawgas.copy()
-norm.C2H2_Acetylene = (norm.C2H2_Acetylene/50)*100
-norm.H2_Hydrogen = (norm.H2_Hydrogen/700)*100
-norm.C2H4_Ethylene = (norm.C2H4_Ethylene/240)*100
-norm.CO_CarbonMonoxide = (norm.CO_CarbonMonoxide/1200)*100
-norm.C2H6_Ethane = (norm.C2H6_Ethane/120)*100
-norm.CH4_Methane = (norm.CH4_Methane/400)*100
-norm= norm[['C2H2_Acetylene', 'H2_Hydrogen', 'C2H4_Ethylene',
-       'CO_CarbonMonoxide','C2H6_Ethane', 'CH4_Methane']]
+
+norm.C2H2_Acetylene = db["1"]
+norm.H2_Hydrogen = db["2"]
+norm.C2H4_Ethylene = db["3"]
+norm.CO_CarbonMonoxide = db["4"]
+norm.C2H6_Ethane = db["5"]
+norm.CH4_Methane = db["6"]
+#norm= norm[['C2H2_Acetylene', 'H2_Hydrogen', 'C2H4_Ethylene',
+#       'CO_CarbonMonoxide','C2H6_Ethane', 'CH4_Methane']]
+X_train = db[0:round((len(db)/3)*2)]
+X_test = db[round((len(db)/3)*2):]
+n_features = 1 #para gases
+y_train = np.zeros(round((len(db)/3)*2))
+y_test = np.zeros(len(db)-round((len(db)/3)*2))
+y_train[round((len(db)/3)*2):] = 1
+y_test[len(db)-round((len(db)/3)*2):] = 1
+y_train = pd.DataFrame(y_train)
+y_test = pd.DataFrame(y_test)
 
 from sklearn.preprocessing import StandardScaler
 X_train = StandardScaler().fit_transform(X_train)
 X_train = pd.DataFrame(X_train)
 X_test = StandardScaler().fit_transform(X_test)
 X_test = pd.DataFrame(X_test)
+
+clf = AutoEncoder(hidden_neurons =[25, 1, 1, 25],contamination=.01)
+clf.fit(X_train)
+
+# Get the outlier scores for the train data
+y_train_scores = clf.decision_scores_  
+
+# Predict the anomaly scores
+y_test_scores = clf.decision_function(X_test)  # outlier scores
+y_test_scores = pd.Series(y_test_scores)
+
+import matplotlib.pyplot as plt
+
+plt.figure(figsize=(10,4))
+plt.hist(y_test_scores, bins='auto')  
+plt.title("Histogram for Model Clf Anomaly Scores")
+plt.show();
+
+df_test = X_test.copy()
+df_test['score'] = y_test_scores
+df_test['cluster'] = np.where(df_test['score']<4, 0, 1)
+df_test['cluster'].value_counts()
+
+t = df_test.groupby('cluster').mean()
+indices = pd.DataFrame(np.where(y_test_scores > 1.9))
+X_test = anormalizar[17000:]
+X_test.reset_index(inplace=True)
+
+fig2 = {plt.plot(X_test.index, X_test.CO_CarbonMonoxide)
+        plt.vlines([indices],0,710,"r")
+#plt.xlim(400,600)
+#plt.ylim(400,600)
+        plt.xlabel('Date Time')
+        plt.ylabel('CO_CarbonMonoxide')
+
+        plt.show();}
+st.write(fig2)
