@@ -148,12 +148,12 @@ indices = pd.DataFrame(np.where(y_test_scores > 1.9))
 X_test = anormalizar[17000:]
 X_test.reset_index(inplace=True)
 
-fig2 = {plt.plot(X_test.index, X_test.CO_CarbonMonoxide)
-        plt.vlines([indices],0,710,"r")
+fig2 = plt.plot(X_test.index, X_test.CO_CarbonMonoxide)
+#        plt.vlines([indices],0,710,"r")
 #plt.xlim(400,600)
 #plt.ylim(400,600)
-        plt.xlabel('Date Time')
-        plt.ylabel('CO_CarbonMonoxide')
+#        plt.xlabel('Date Time')
+#        plt.ylabel('CO_CarbonMonoxide')
 
-        plt.show();}
+#        plt.show();}
 st.write(fig2)
