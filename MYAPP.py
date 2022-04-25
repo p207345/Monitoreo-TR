@@ -36,6 +36,12 @@ else:
     st.write("""# Has seleccionado la base de datos 3""")
     df = pd.read_csv('https://raw.githubusercontent.com/IgnacioRodriguez98/Monitoreo-TR/main/Data/normJA.csv', header=None)
     st.write(df)
+
+
+for i in df:
+    db = pd.DataFrame()
+    db.append(i)
+    time.sleep(1)
 ##################### SELECCION DE GASES ######################
 
 with st.sidebar:
