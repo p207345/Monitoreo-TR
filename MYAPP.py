@@ -39,7 +39,7 @@ else:
 
 for i in df:
     st.write(i)
-    db = pd.DataFrame()
+    db = []
     db.append(i)
     time.sleep(1)
 ##################### SELECCION DE GASES ######################
