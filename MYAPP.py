@@ -37,10 +37,10 @@ else:
     st.write(df)
 
 
-for i in df:
+for i, row in df.iterrows():
     st.write(i)
     db = []
-    db.append(i)
+    db.append(row)
     time.sleep(1)
 ##################### SELECCION DE GASES ######################
 
