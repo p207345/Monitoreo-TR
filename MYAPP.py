@@ -37,12 +37,7 @@ else:
     st.write(df)
 
 
-for i, row in df.iterrows():
-    st.write(row)
-    db = []
-    db.append(row)
-    time.sleep(1)
-    st.write(db)
+
 ##################### SELECCION DE GASES ######################
 
 with st.sidebar:
@@ -85,5 +80,11 @@ if len(lista)> 0:
 if C2H2== False |H2 == False | C2H4 == False |CO == False |C2H6 ==False |CH4 == False:
    p="""### No hay gases seleccionados, por favor selecciona al menos uno"""
 
+for i, row in p.iterrows():
+    st.write(row)
+    db = []
+    db.append(row)
+    time.sleep(1)
+    st.write(db)
 st.write(p)
 
