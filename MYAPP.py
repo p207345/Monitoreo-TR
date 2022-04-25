@@ -149,12 +149,12 @@ indices = pd.DataFrame(np.where(y_test_scores > 1.9))
 X_test = db[len(db)-round((len(db)/3)*2):]
 X_test.reset_index(inplace=True)
 
-fig2 = plt.plot(X_test)
-#        plt.vlines([indices],0,710,"r")
+fig2 = plt.fig(1)
+plt.plot(X_test)
+plt.vlines([indices],0,710,"r")
 #plt.xlim(400,600)
 #plt.ylim(400,600)
-#        plt.xlabel('Date Time')
-#        plt.ylabel('CO_CarbonMonoxide')
-
-#        plt.show();}
+plt.xlabel('Date Time')
+plt.ylabel('CO_CarbonMonoxide')
+plt.show();}
 st.write(fig2)
