@@ -134,7 +134,7 @@ y_test_scores = pd.Series(y_test_scores)
 
 import matplotlib.pyplot as plt
 
-plt.figure(figsize=(10,4))
+fig3 = plt.figure(figsize=(10,4))
 plt.hist(y_test_scores, bins='auto')  
 plt.title("Histogram for Model Clf Anomaly Scores")
 plt.show();
@@ -149,7 +149,7 @@ indices = pd.DataFrame(np.where(y_test_scores > 1.9))
 X_test = db[len(db)-round((len(db)/3)*2):]
 X_test.reset_index(inplace=True)
 
-fig2 = plt.figure(1)
+fig2 = plt.figure(2)
 plt.plot(X_test)
 plt.vlines([indices],0,710,"r")
 #plt.xlim(400,600)
@@ -157,4 +157,5 @@ plt.vlines([indices],0,710,"r")
 plt.xlabel('Date Time')
 plt.ylabel('CO_CarbonMonoxide')
 plt.show();
+st.write(fig3)
 st.write(fig2)
