@@ -38,9 +38,9 @@ else:
     st.write(df)
 ##################### SELECCION DE GASES ######################
 
-#with st.sidebar:
-#   st.write("# Selecciona el tamaño de la ventana:")
-#    vent= st.slider("",1,len(df))
+with st.sidebar:
+   st.write("# Selecciona el tamaño de la ventana:")
+    vent= st.slider("",1,len(df))
 
 lista = []
 p= df[0]
