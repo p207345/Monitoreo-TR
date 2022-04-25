@@ -79,10 +79,10 @@ if len(lista)> 0:
 
 if C2H2== False |H2 == False | C2H4 == False |CO == False |C2H6 ==False |CH4 == False:
    p="""### No hay gases seleccionados, por favor selecciona al menos uno"""
-
+db = []
 for i, row in p.iterrows():
     st.write(row)
-    db = []
+    
     db.append(row)
     time.sleep(1)
     db = pd.DataFrame(db)
