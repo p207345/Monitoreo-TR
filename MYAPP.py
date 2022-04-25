@@ -42,7 +42,7 @@ for i, row in df.iterrows():
     db = []
     db.append(row)
     time.sleep(1)
-st.write(db)
+    st.write(db)
 ##################### SELECCION DE GASES ######################
 
 with st.sidebar:
