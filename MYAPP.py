@@ -97,12 +97,12 @@ st.write(fig)
 from pyod.models.auto_encoder import AutoEncoder
 
 
-norm.C2H2_Acetylene = db["1"]
-norm.H2_Hydrogen = db["2"]
-norm.C2H4_Ethylene = db["3"]
-norm.CO_CarbonMonoxide = db["4"]
-norm.C2H6_Ethane = db["5"]
-norm.CH4_Methane = db["6"]
+#norm.C2H2_Acetylene = db["1"]
+#norm.H2_Hydrogen = db["2"]
+#norm.C2H4_Ethylene = db["3"]
+#norm.CO_CarbonMonoxide = db["4"]
+#norm.C2H6_Ethane = db["5"]
+#norm.CH4_Methane = db["6"]
 #norm= norm[['C2H2_Acetylene', 'H2_Hydrogen', 'C2H4_Ethylene',
 #       'CO_CarbonMonoxide','C2H6_Ethane', 'CH4_Methane']]
 X_train = db[0:round((len(db)/3)*2)]
