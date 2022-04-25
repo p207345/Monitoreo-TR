@@ -110,9 +110,9 @@ y_train = pd.DataFrame(y_train)
 y_test = pd.DataFrame(y_test)
 
 from sklearn.preprocessing import StandardScaler
-X_train = StandardScaler().fit_transform(X_train)
+#X_train = StandardScaler().fit_transform(X_train)
 X_train = pd.DataFrame(X_train)
-X_test = StandardScaler().fit_transform(X_test)
+#X_test = StandardScaler().fit_transform(X_test)
 X_test = pd.DataFrame(X_test)
 
 clf = AutoEncoder(hidden_neurons =[25, 1, 1, 25],contamination=.01)
