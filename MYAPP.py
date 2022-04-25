@@ -88,5 +88,5 @@ db = pd.DataFrame(db)
 st.write(db)
 st.write(p)
 
-fig = px.line(db)
+fig = px.line(db,animation_frame:"index",animation_group:db)
 st.write(fig)
