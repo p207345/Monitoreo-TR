@@ -88,3 +88,4 @@ db = pd.DataFrame(db)
 st.write(db)
 st.write(p)
 
+fig = px.line(db,x=0,y=1)
