@@ -89,3 +89,4 @@ st.write(db)
 st.write(p)
 
 fig = px.line(db)
+st.write(fig)
