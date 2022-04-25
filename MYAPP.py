@@ -92,3 +92,22 @@ st.write(p)
 ############## Grafica
 fig = px.line(db)#,animation_frame="index",animation_group=db)
 st.write(fig)
+
+#### AUTOENCODER
+from pyod.models.auto_encoder import AutoEncoder
+
+norm = Rawgas.copy()
+norm.C2H2_Acetylene = (norm.C2H2_Acetylene/50)*100
+norm.H2_Hydrogen = (norm.H2_Hydrogen/700)*100
+norm.C2H4_Ethylene = (norm.C2H4_Ethylene/240)*100
+norm.CO_CarbonMonoxide = (norm.CO_CarbonMonoxide/1200)*100
+norm.C2H6_Ethane = (norm.C2H6_Ethane/120)*100
+norm.CH4_Methane = (norm.CH4_Methane/400)*100
+norm= norm[['C2H2_Acetylene', 'H2_Hydrogen', 'C2H4_Ethylene',
+       'CO_CarbonMonoxide','C2H6_Ethane', 'CH4_Methane']]
+
+from sklearn.preprocessing import StandardScaler
+X_train = StandardScaler().fit_transform(X_train)
+X_train = pd.DataFrame(X_train)
+X_test = StandardScaler().fit_transform(X_test)
+X_test = pd.DataFrame(X_test)
