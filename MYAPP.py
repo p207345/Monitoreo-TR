@@ -85,6 +85,7 @@ for i, row in p.iterrows():
     db = []
     db.append(row)
     time.sleep(1)
+    db = pd.DataFrame(db)
     st.write(db)
 st.write(p)
 
