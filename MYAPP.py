@@ -79,6 +79,8 @@ if len(lista)> 0:
 
 if C2H2== False |H2 == False | C2H4 == False |CO == False |C2H6 ==False |CH4 == False:
    p="""### No hay gases seleccionados, por favor selecciona al menos uno"""
+
+######### Reproduccion tiempo real
 db = []
 for i, row in p.iterrows():
     #st.write(row)
@@ -87,6 +89,6 @@ for i, row in p.iterrows():
 db = pd.DataFrame(db)
 st.write(db)
 st.write(p)
-
+############## Grafica
 fig = px.line(db,animation_frame="index",animation_group=db)
 st.write(fig)
