@@ -156,5 +156,5 @@ plt.vlines([indices],0,710,"r")
 #plt.ylim(400,600)
 plt.xlabel('Date Time')
 plt.ylabel('CO_CarbonMonoxide')
-plt.show();}
+plt.show();
 st.write(fig2)
