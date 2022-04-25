@@ -38,7 +38,7 @@ else:
 
 
 for i, row in df.iterrows():
-    st.write(i)
+    st.write(row)
     db = []
     db.append(row)
     time.sleep(1)
