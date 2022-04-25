@@ -150,7 +150,7 @@ X_test = db[round((len(db)/3)*2):]
 X_test.reset_index(inplace=True)
 
 fig2 = plt.figure(2)
-plt.plot(X_test.index,X_test.values)
+plt.plot(db)
 plt.vlines([indices],0,710,"r")
 #plt.xlim(400,600)
 #plt.ylim(400,600)
