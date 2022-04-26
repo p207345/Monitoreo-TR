@@ -86,10 +86,10 @@ db = []
 for i, row in p.iterrows():
     #st.write(row)
     db.append(row)
-    #time.sleep(.1)
+    time.sleep(1)
 db = pd.DataFrame(db)
-st.write(db)
-st.write(p)
+#st.write(db)
+#st.write(p)
 ############## Grafica
 fig = px.line(db)#,animation_frame="index",animation_group=db)
 st.write(fig)
@@ -164,17 +164,6 @@ CO = db.iloc[:, [0]]
 #Eta = db.iloc[:, [5]]
 #Me = db.iloc[:, [6]]
 
-
-
-norm = db.copy()
-#norm.iloc[:, [1]] = (norm.iloc[:, [1]]/50)*100
-#norm.iloc[:, [2]] = (norm.iloc[:, [2]]/700)*100
-#norm.iloc[:, [3]] = (norm.iloc[:, [3]]/240)*100
-norm.iloc[:, [0]] = (norm.iloc[:, [0]]/1200)*100
-#norm.iloc[:, [5]] = (norm.iloc[:, [5]]/120)*100
-#norm.iloc[:, [6]] = (norm.iloc[:, [6]]/400)*100
-#norm= norm[['C2H2_Acetylene', 'H2_Hydrogen', 'C2H4_Ethylene',
-#       'CO_CarbonMonoxide','C2H6_Ethane', 'CH4_Methane']]
 #Monoxido de carbono
 outliers_fraction = float(.15)
 scaler = StandardScaler()
@@ -184,14 +173,11 @@ model =  IsolationForest(contamination=outliers_fraction)
 model.fit(data)
 
 CO['anomaly'] = model.predict(data)
-st.write(CO)
+
 # visualization
 fig4, ax = plt.subplots(figsize=(10,6))
 
 a = CO.loc[CO['anomaly'] == -1, [4]] #anomaly
-
-#pd.DataFrame(np.where(CO["anomaly"]==-1))
-#CO.loc[CO['anomaly'] == -1, [0]] #anomaly
 
 ax.plot(CO.index, CO.iloc[:, [0]], color='black', label = 'Normal')
 ax.scatter(a.index,a.iloc[:, [0]], color='red', label = 'Anomaly')
@@ -199,3 +185,94 @@ plt.title("Monoxido de Carbono")
 plt.legend()
 plt.show();
 st.write(fig4,ax)
+
+########## Grafica dinamica
+
+import matplotlib.animation as animation
+
+plt.style.use('fivethirtyeight')
+
+set_ind=set({})
+
+def animate(i):
+    data = db
+    x = data.index
+    #x1 = data.iloc[:, [0]]
+    y1 = data.iloc[:, [0]]
+    y2 = data.iloc[:, [1]]
+    y3 = data.iloc[:, [2]]
+    y4 = data.iloc[:, [3]]
+    y5 = data.iloc[:, [4]]
+    y6 = data.iloc[:, [5]]
+
+    
+
+    # Get the outlier scores for the train data
+    #data2 = data[['C2H2_Acetylene', 'H2_Hydrogen', 'C2H4_Ethylene',
+    #       'CO_CarbonMonoxide','C2H6_Ethane', 'CH4_Methane']]
+    df_test = data.copy()
+    #estandarizar
+    
+    df_test = scaler.fit_transform(df_test)
+    df_test = pd.DataFrame(df_test)
+    #atc.clf.fit(df_test)
+    y_train_scores = clf.decision_scores_  
+
+    # Predict the anomaly scores
+    y_test_scores = clf.decision_function(df_test)  # outlier scores
+    y_test_scores = pd.Series(y_test_scores)
+
+    df_test['score'] = y_test_scores
+    df_test['cluster'] = np.where(df_test['score']<4, 0, 1)
+    df_test['cluster'].value_counts()
+    t = df_test.groupby('cluster').mean()
+    indices = list(np.where(y_test_scores > 3))
+    for v in indices:
+        set_ind.update(v)
+    
+    rayas2 = set({})    
+    rayas = pd.DataFrame(set_ind).sort_values(0)
+    df = pd.DataFrame(set_ind).sort_values(0)
+    df["dif"] = df.diff()
+    df.rename(columns={0:"orig"},inplace = True)
+    df.reset_index(inplace=True)
+    df.drop("index",axis=1,inplace=True)
+    defin = []
+
+    for ind, row in df.iterrows():
+        #print(df.iloc(ind,1))
+        if df.dif[ind] == "":
+            next
+        if df.dif[ind] != 1:
+            defin.append(df.orig[ind])
+        else:
+            if df.dif[ind+1] != 1:
+                defin.append(df.orig[ind])
+            else:
+                next
+                
+                
+    rayas2.update(defin)
+    rayas2 = pd.DataFrame(rayas2)
+
+
+    
+    plt.cla()
+    plt.plot(x1, y1, label='C2H2')
+    plt.plot(x1, y2, label='H2')
+    plt.plot(x1, y3, label='C2H4')
+    plt.plot(x1, y4, label='CO')
+    plt.plot(x1, y5, label='C2H6')
+    plt.plot(x1, y6, label='CH4')
+    plt.xticks(rotation=90)
+    plt.vlines(rayas2,0,50,"r")
+    plt.legend(loc='upper left')
+    plt.tight_layout()
+    plt.show();    
+    
+    
+    
+ani = animation.FuncAnimation(plt.gcf(), animate, interval=1000)
+plt.tight_layout()
+plt.show();
+st.write(ani)
