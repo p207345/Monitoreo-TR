@@ -153,3 +153,37 @@ plt.ylabel('CO_CarbonMonoxide')
 plt.show();
 st.write(fig3)
 st.write(fig2)
+
+####### ISOLATION FOREST
+
+from sklearn.ensemble import IsolationForest
+norm = db.copy()
+norm.iloc[:,[1]] = (norm.iloc[:,[1]]/50)*100
+norm.iloc[:,[2]] = (norm.iloc[:,[2]]/700)*100
+norm.iloc[:,[3]] = (norm.iloc[:,[3]]/240)*100
+norm.iloc[:,[4]] = (norm.iloc[:,[4]]/1200)*100
+norm.iloc[:,[5]] = (norm.iloc[:,[5]]/120)*100
+norm.iloc[:,[6]] = (norm.iloc[:,[6]]/400)*100
+#norm= norm[['C2H2_Acetylene', 'H2_Hydrogen', 'C2H4_Ethylene',
+#       'CO_CarbonMonoxide','C2H6_Ethane', 'CH4_Methane']]
+#Monoxido de carbono
+outliers_fraction = float(.15)
+scaler = StandardScaler()
+np_scaled = scaler.fit_transform(CO.values.reshape(-1, 1))
+data = pd.DataFrame(CO["CO_CarbonMonoxide"])
+model =  IsolationForest(contamination=outliers_fraction)
+model.fit(data)
+
+CO['anomaly'] = model.predict(data)
+
+# visualization
+fig4, ax = plt.subplots(figsize=(10,6))
+
+a = CO.loc[CO['anomaly'] == -1, ['CO_CarbonMonoxide']] #anomaly
+
+ax.plot(CO.index, CO['CO_CarbonMonoxide'], color='black', label = 'Normal')
+ax.scatter(a.index,a['CO_CarbonMonoxide'], color='red', label = 'Anomaly')
+plt.title("Monoxido de Carbono")
+plt.legend()
+plt.show();
+st.write(fig4,ax)
