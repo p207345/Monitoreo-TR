@@ -188,7 +188,8 @@ CO['anomaly'] = model.predict(data)
 # visualization
 fig4, ax = plt.subplots(figsize=(10,6))
 
-a = CO.loc[CO['anomaly'] == -1, [0]] #anomaly
+a = pd.DataFrame(np.where(CO["anomaly"]==-1))
+#CO.loc[CO['anomaly'] == -1, [0]] #anomaly
 
 ax.plot(CO.index, CO.iloc[:, [0]], color='black', label = 'Normal')
 ax.scatter(a.index,a.iloc[:, [0]], color='red', label = 'Anomaly')
