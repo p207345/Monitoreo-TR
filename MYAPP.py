@@ -179,7 +179,7 @@ norm.iloc[:, [0]] = (norm.iloc[:, [0]]/1200)*100
 outliers_fraction = float(.15)
 scaler = StandardScaler()
 np_scaled = scaler.fit_transform(CO.values.reshape(-1, 1))
-data = pd.DataFrame(CO.iloc[:, [4]])
+data = pd.DataFrame(CO.iloc[:, [0]])
 model =  IsolationForest(contamination=outliers_fraction)
 model.fit(data)
 
