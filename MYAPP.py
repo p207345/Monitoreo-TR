@@ -138,7 +138,7 @@ df_test['cluster'] = np.where(df_test['score']<4, 0, 1)
 df_test['cluster'].value_counts()
 
 t = df_test.groupby('cluster').mean()
-indices = pd.DataFrame(np.where(y_test_scores > 5))
+indices = pd.DataFrame(np.where(y_test_scores > 1.3))
 X_test = db[round((len(db)/3)*2):]
 X_test.reset_index(inplace=True)
 
