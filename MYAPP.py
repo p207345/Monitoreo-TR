@@ -188,7 +188,7 @@ st.write(CO)
 # visualization
 fig4, ax = plt.subplots(figsize=(10,6))
 
-a = CO.loc[CO['anomaly'] == -1, CO.iloc[:, [0]]] #anomaly
+a = CO.loc[CO['anomaly'] == -1, [4]] #anomaly
 
 #pd.DataFrame(np.where(CO["anomaly"]==-1))
 #CO.loc[CO['anomaly'] == -1, [0]] #anomaly
