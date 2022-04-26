@@ -158,12 +158,12 @@ st.write(fig2)
 
 from sklearn.ensemble import IsolationForest
 norm = db.copy()
-norm.iloc[:,[1]] = (norm.iloc[:,[1]]/50)*100
-norm.iloc[:,[2]] = (norm.iloc[:,[2]]/700)*100
-norm.iloc[:,[3]] = (norm.iloc[:,[3]]/240)*100
-norm.iloc[:,[4]] = (norm.iloc[:,[4]]/1200)*100
-norm.iloc[:,[5]] = (norm.iloc[:,[5]]/120)*100
-norm.iloc[:,[6]] = (norm.iloc[:,[6]]/400)*100
+norm.iloc[:, [1]] = (norm.iloc[:, [1]]/50)*100
+norm.iloc[:, [2]] = (norm.iloc[:, [2]]/700)*100
+norm.iloc[:, [3]] = (norm.iloc[:, [3]]/240)*100
+norm.iloc[:, [4]] = (norm.iloc[:, [4]]/1200)*100
+norm.iloc[:, [5]] = (norm.iloc[:, [5]]/120)*100
+norm.iloc[:, [6]] = (norm.iloc[:, [6]]/400)*100
 #norm= norm[['C2H2_Acetylene', 'H2_Hydrogen', 'C2H4_Ethylene',
 #       'CO_CarbonMonoxide','C2H6_Ethane', 'CH4_Methane']]
 #Monoxido de carbono
