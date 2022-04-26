@@ -158,7 +158,7 @@ st.write(fig2)
 
 from sklearn.ensemble import IsolationForest
 norm = db.copy()
-norm.iloc[:, [1]] = (norm.iloc[:, [1]]/50)*100
+norm[:, [1]] = (norm.iloc[:, [1]]/50)*100
 norm.iloc[:, [2]] = (norm.iloc[:, [2]]/700)*100
 norm.iloc[:, [3]] = (norm.iloc[:, [3]]/240)*100
 norm.iloc[:, [4]] = (norm.iloc[:, [4]]/1200)*100
