@@ -113,22 +113,22 @@ from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
 gases = []
 if con == 1:
-    gases = [1]
+    gases = [0]
 
 elif con == 2:
-    gases = [1,2]
+    gases = [0,1]
 
 elif con == 3:
-    gases = [1,2,3]
+    gases = [0,1,2]
 
 elif con == 4:
-    gases = [1,2,3,4]
+    gases = [0,1,2,3]
 
 elif con == 5:
-    gases = [1,2,3,4,5]
+    gases = [0,1,2,3,4]
 
 elif con == 6:
-    gases = [1,2,3,4,5,6]
+    gases = [0,1,2,3,4,5]
 
 else:
     st.write("Por favor escoge los gases a analizar")
@@ -173,6 +173,7 @@ if con > 1:
     indices = pd.DataFrame(np.where(y_test_scores > 2.5))
     X_test = db[round((len(db)/3)*2):]
     X_test.reset_index(inplace=True)
+    X_test.drop[["0"],axis=1,inplace=True]
     fig2 = plt.figure(2)
     plt.plot(X_test.index,X_test.iloc[:, gases])
     plt.vlines([indices],0,X_test.max().max(),"r")
