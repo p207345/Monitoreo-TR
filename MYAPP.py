@@ -111,6 +111,27 @@ st.write(fig)
 from pyod.models.auto_encoder import AutoEncoder
 from sklearn.preprocessing import StandardScaler
 import matplotlib.pyplot as plt
+gases = []
+if con == 1:
+    gases = [1]
+
+elif con == 2:
+    gases = [1,2]
+
+elif con == 3:
+    gases = [1,2,3]
+
+elif con == 4:
+    gases = [1,2,3,4]
+
+elif con == 5:
+    gases = [1,2,3,4,5]
+
+elif con == 6:
+    gases = [1,2,3,4,5,6]
+
+else:
+    st.write("Por favor escoge los gases a analizar")
 
 if con > 1:
 
@@ -153,7 +174,7 @@ if con > 1:
     X_test = db[round((len(db)/3)*2):]
     X_test.reset_index(inplace=True)
     fig2 = plt.figure(2)
-    plt.plot(X_test.index,X_test.iloc[:, [1,2]])
+    plt.plot(X_test.index,X_test.iloc[:, [1,con]])
     plt.vlines([indices],0,2,"r")
     plt.xlabel('Date Time')
     plt.ylabel('Gases')
