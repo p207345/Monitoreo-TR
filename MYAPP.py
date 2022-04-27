@@ -209,7 +209,7 @@ if con == 1:
     CO['anomaly'] = model.predict(data)
     st.write(CO)
 
-    if CO.header[:,[0]]==3:
+    if CO.header["0"]==3:
         st.write("yes")
 # visualization
     fig4, ax = plt.subplots(figsize=(10,6))
