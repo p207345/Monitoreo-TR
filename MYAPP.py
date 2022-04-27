@@ -153,7 +153,7 @@ if con > 1:
     X_test = db[round((len(db)/3)*2):]
     X_test.reset_index(inplace=True)
     fig2 = plt.figure(2)
-    plt.plot(X_test.index,X_test.iloc[:, [1]])
+    plt.plot(X_test.index,X_test.iloc[:, [1]:[2]])
     plt.vlines([indices],0,2,"r")
     plt.xlabel('Date Time')
     plt.ylabel('Gases')
