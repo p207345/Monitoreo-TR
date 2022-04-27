@@ -149,7 +149,7 @@ if con > 1:
     df_test['cluster'].value_counts()
 
     t = df_test.groupby('cluster').mean()
-    indices = pd.DataFrame(np.where(y_test_scores > 2))
+    indices = pd.DataFrame(np.where(y_test_scores > 2.5))
     X_test = db[round((len(db)/3)*2):]
     X_test.reset_index(inplace=True)
     fig2 = plt.figure(2)
