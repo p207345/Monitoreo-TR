@@ -48,35 +48,37 @@ with st.sidebar:
 lista = []
 p= df[0]
 con = 0
+b1, b2, b3, b4, b5, b6 = 0
 if C2H2:
     a = df[[0,1]]
     lista.append(a)
     con += 1
-
+    b1 = 1
 if H2:
     b = df[[0,2]]
     lista.append(b)
     con += 1
-
+    b2 = 1
 if C2H4:
     c = df[[0,3]]
     lista.append(c)
     con += 1
-
+    b3 = 1
 if CO:
     d = df[[0,4]]
     lista.append(d)
     con += 1
-
+    b4 = 1
 if C2H6:
     e = df[[0,5]]
     lista.append(e)
     con += 1
-
+    b5 = 1
 if CH4:
     f = df[[0,6]]
     lista.append(f)
     con += 1
+    b6 = 1
 st.write(con)
 if len(lista)> 0:
 
