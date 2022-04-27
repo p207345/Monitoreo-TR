@@ -207,7 +207,7 @@ if con == 1:
     model.fit(data)
 
     CO['anomaly'] = model.predict(data)
-    st.write(CO.column())
+    st.write(CO)
 # visualization
     fig4, ax = plt.subplots(figsize=(10,6))
 
