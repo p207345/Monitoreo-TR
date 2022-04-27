@@ -130,10 +130,10 @@ elif con == 5:
 elif con == 6:
     gases = [0,1,2,3,4,5]
 
-else:
-    st.write("Por favor escoge los gases a analizar")
+elif con == 0:
+   st.write("Por favor escoge los gases a analizar")
 
-if con > 1:
+if con >= 2:
 
     X_train = db[0:round((len(db)/3)*2)]
     X_test = db[round((len(db)/3)*2):]
