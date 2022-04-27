@@ -104,95 +104,98 @@ st.write(fig)
 
 #### AUTOENCODER
 from pyod.models.auto_encoder import AutoEncoder
-
-
-
-X_train = db[0:round((len(db)/3)*2)]
-X_test = db[round((len(db)/3)*2):]
-n_features = 1 #para gases
-y_train = np.zeros(round((len(db)/3)*2))
-y_test = np.zeros(len(db)-round((len(db)/3)*2))
-y_train[round((len(db)/3)*2):] = 1
-y_test[len(db)-round((len(db)/3)*2):] = 1
-y_train = pd.DataFrame(y_train)
-y_test = pd.DataFrame(y_test)
-
 from sklearn.preprocessing import StandardScaler
-X_train = StandardScaler().fit_transform(X_train)
-X_train = pd.DataFrame(X_train)
-X_test = StandardScaler().fit_transform(X_test)
-X_test = pd.DataFrame(X_test)
 
-clf = AutoEncoder(hidden_neurons =[25, 1, 1, 25],contamination=.01)
-clf.fit(X_train)
+if con > 1:
+
+    X_train = db[0:round((len(db)/3)*2)]
+    X_test = db[round((len(db)/3)*2):]
+    n_features = con #para gases
+    y_train = np.zeros(round((len(db)/3)*2))
+    y_test = np.zeros(len(db)-round((len(db)/3)*2))
+    y_train[round((len(db)/3)*2):] = 1
+    y_test[len(db)-round((len(db)/3)*2):] = 1
+    y_train = pd.DataFrame(y_train)
+    y_test = pd.DataFrame(y_test)
+
+#estandarizacion
+    X_train = StandardScaler().fit_transform(X_train)
+    X_train = pd.DataFrame(X_train)
+    X_test = StandardScaler().fit_transform(X_test)
+    X_test = pd.DataFrame(X_test)
+
+    clf = AutoEncoder(hidden_neurons =[25, 2, 2, 25],contamination=.01)
+    clf.fit(X_train)
 
 # Get the outlier scores for the train data
-y_train_scores = clf.decision_scores_  
+    y_train_scores = clf.decision_scores_  
 
 # Predict the anomaly scores
-y_test_scores = clf.decision_function(X_test)  # outlier scores
-y_test_scores = pd.Series(y_test_scores)
+    y_test_scores = clf.decision_function(X_test)  # outlier scores
+    y_test_scores = pd.Series(y_test_scores)
 
 import matplotlib.pyplot as plt
 
-fig3 = plt.figure(figsize=(10,4))
-plt.hist(y_test_scores, bins='auto')  
-plt.title("Histogram for Model Clf Anomaly Scores")
-plt.show();
+    fig3 = plt.figure(figsize=(10,4))   
+    plt.hist(y_test_scores, bins='auto')  
+    plt.title("Histogram for Model Clf Anomaly Scores")
+    plt.show();
 
-df_test = X_test.copy()
-df_test['score'] = y_test_scores
-df_test['cluster'] = np.where(df_test['score']<4, 0, 1)
-df_test['cluster'].value_counts()
+    df_test = X_test.copy()
+    df_test['score'] = y_test_scores
+    df_test['cluster'] = np.where(df_test['score']<4, 0, 1)
+    df_test['cluster'].value_counts()
 
-t = df_test.groupby('cluster').mean()
-indices = pd.DataFrame(np.where(y_test_scores > 1.5))
-X_test = db[round((len(db)/3)*2):]
-X_test.reset_index(inplace=True)
+    t = df_test.groupby('cluster').mean()
+    indices = pd.DataFrame(np.where(y_test_scores > 1.5))
+    X_test = db[round((len(db)/3)*2):]
+    X_test.reset_index(inplace=True)
 
 
-fig2 = plt.figure(2)
-plt.plot(X_test.index,X_test.iloc[:, [1]])
-plt.vlines([indices],0,600,"r")
+    fig2 = plt.figure(2)
+    plt.plot(X_test.index,X_test.iloc[:, [1]])
+    plt.vlines([indices],0,600,"r")
 #plt.xlim(400,600)
 #plt.ylim(400,600)
-plt.xlabel('Date Time')
-plt.ylabel('CO_CarbonMonoxide')
-plt.show();
-st.write(fig3)
-st.write(fig2)
+    plt.xlabel('Date Time')
+    plt.ylabel('CO_CarbonMonoxide')
+    plt.show();
+    st.write(fig3)
+    st.write(fig2)
 
 ####### ISOLATION FOREST
 
 from sklearn.ensemble import IsolationForest
-#Ac = db.iloc[:, [1]]
-#H2 = db.iloc[:, [2]]
-#Et = db.iloc[:, [3]]
-CO = db.iloc[:, [0]]
-#Eta = db.iloc[:, [5]]
-#Me = db.iloc[:, [6]]
+else:
+
+    #Ac = db.iloc[:, [1]]
+    #H2 = db.iloc[:, [2]]
+    #Et = db.iloc[:, [3]]
+    CO = db.iloc[:, [0]]
+    #Eta = db.iloc[:, [5]]
+    #Me = db.iloc[:, [6]]
 
 #Monoxido de carbono
-outliers_fraction = float(.15)
-scaler = StandardScaler()
-np_scaled = scaler.fit_transform(CO.values.reshape(-1, 1))
-data = pd.DataFrame(CO.iloc[:, [0]])
-model =  IsolationForest(contamination=outliers_fraction)
-model.fit(data)
+    outliers_fraction = float(.15)
+    scaler = StandardScaler()
+    np_scaled = scaler.fit_transform(CO.values.reshape(-1, 1))
+    data = pd.DataFrame(CO.iloc[:, [0]])
+    model =  IsolationForest(contamination=outliers_fraction)
+    model.fit(data)
 
-CO['anomaly'] = model.predict(data)
+    CO['anomaly'] = model.predict(data)
 
 # visualization
-fig4, ax = plt.subplots(figsize=(10,6))
+    fig4, ax = plt.subplots(figsize=(10,6))
 
-a = CO.loc[CO['anomaly'] == -1, [4]] #anomaly
+    a = CO.loc[CO['anomaly'] == -1, [4]] #anomaly
 
-ax.plot(CO.index, CO.iloc[:, [0]], color='black', label = 'Normal')
-ax.scatter(a.index,a.iloc[:, [0]], color='red', label = 'Anomaly')
-plt.title("Monoxido de Carbono")
-plt.legend()
-plt.show();
-st.write(fig4,ax)
+    ax.plot(CO.index, CO.iloc[:, [0]], color='black', label = 'Normal')
+    ax.scatter(a.index,a.iloc[:, [0]], color='red', label = 'Anomaly')
+    plt.title("Monoxido de Carbono")
+    plt.legend()
+    plt.show();
+    st.write(fig4,ax)
 
 ########## Grafica dinamica
 
