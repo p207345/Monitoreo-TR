@@ -149,14 +149,14 @@ if con > 1:
     df_test['cluster'].value_counts()
 
     t = df_test.groupby('cluster').mean()
-    indices = pd.DataFrame(np.where(y_test_scores > 1.5))
+    indices = pd.DataFrame(np.where(y_test_scores > 2))
     X_test = db[round((len(db)/3)*2):]
     X_test.reset_index(inplace=True)
     fig2 = plt.figure(2)
     plt.plot(X_test.index,X_test.iloc[:, [1]])
     plt.vlines([indices],0,600,"r")
     plt.xlabel('Date Time')
-    plt.ylabel('CO_CarbonMonoxide')
+    plt.ylabel('Gases')
     plt.show();
     st.write(fig3)
     st.write(fig2)
