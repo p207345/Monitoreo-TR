@@ -48,7 +48,7 @@ with st.sidebar:
 lista = []
 p= df[0]
 con = 0
-b1, b2, b3, b4, b5, b6 = 0
+(b1, b2, b3, b4, b5, b6) = 0
 if C2H2:
     a = df[[0,1]]
     lista.append(a)
