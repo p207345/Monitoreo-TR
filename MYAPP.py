@@ -211,19 +211,79 @@ if con == 1:
     st.write(CO)
     st.write(w)
 
-    if CO.columns[0]==3:
-        st.write("yes")
+    if CO.columns[0]==1:
+        fig4, ax = plt.subplots(figsize=(10,6))
+
+        a = CO.loc[CO['anomaly'] == -1, [1]] #anomaly
+
+        ax.plot(CO.index, CO.iloc[:, [0]], color='black', label = 'Normal')
+        ax.scatter(a.index,a.iloc[:, [0]], color='red', label = 'Anomaly')
+        plt.title("Acetileno")
+        plt.legend()
+        plt.show();
+        st.write(fig4,ax)
+
+    elif CO.columns[0]==2:
+        fig4, ax = plt.subplots(figsize=(10,6))
+
+        a = CO.loc[CO['anomaly'] == -1, [2]] #anomaly
+
+        ax.plot(CO.index, CO.iloc[:, [0]], color='black', label = 'Normal')
+        ax.scatter(a.index,a.iloc[:, [0]], color='red', label = 'Anomaly')
+        plt.title("Hidrogeno")
+        plt.legend()
+        plt.show();
+        st.write(fig4,ax)
+
+    elif CO.columns[0]==3:
+        fig4, ax = plt.subplots(figsize=(10,6))
+
+        a = CO.loc[CO['anomaly'] == -1, [3]] #anomaly
+
+        ax.plot(CO.index, CO.iloc[:, [0]], color='black', label = 'Normal')
+        ax.scatter(a.index,a.iloc[:, [0]], color='red', label = 'Anomaly')
+        plt.title("Etileno")
+        plt.legend()
+        plt.show();
+        st.write(fig4,ax)
+
+    elif CO.columns[0]==4:
+        fig4, ax = plt.subplots(figsize=(10,6))
+
+        a = CO.loc[CO['anomaly'] == -1, [4]] #anomaly
+
+        ax.plot(CO.index, CO.iloc[:, [0]], color='black', label = 'Normal')
+        ax.scatter(a.index,a.iloc[:, [0]], color='red', label = 'Anomaly')
+        plt.title("Monoxido de Carbono")
+        plt.legend()
+        plt.show();
+        st.write(fig4,ax)
+        
+    elif CO.columns[0]==5:
+        fig4, ax = plt.subplots(figsize=(10,6))
+
+        a = CO.loc[CO['anomaly'] == -1, [5]] #anomaly
+
+        ax.plot(CO.index, CO.iloc[:, [0]], color='black', label = 'Normal')
+        ax.scatter(a.index,a.iloc[:, [0]], color='red', label = 'Anomaly')
+        plt.title("Etano")
+        plt.legend()
+        plt.show();
+        st.write(fig4,ax)
+
+    elif CO.columns[0]==6:
+        fig4, ax = plt.subplots(figsize=(10,6))
+
+        a = CO.loc[CO['anomaly'] == -1, [6]] #anomaly
+
+        ax.plot(CO.index, CO.iloc[:, [0]], color='black', label = 'Normal')
+        ax.scatter(a.index,a.iloc[:, [0]], color='red', label = 'Anomaly')
+        plt.title("Metano")
+        plt.legend()
+        plt.show();
+        st.write(fig4,ax)    
 # visualization
-    fig4, ax = plt.subplots(figsize=(10,6))
-
-    a = CO.loc[CO['anomaly'] == -1, [4]] #anomaly
-
-    ax.plot(CO.index, CO.iloc[:, [0]], color='black', label = 'Normal')
-    ax.scatter(a.index,a.iloc[:, [0]], color='red', label = 'Anomaly')
-    plt.title("Monoxido de Carbono")
-    plt.legend()
-    plt.show();
-    st.write(fig4,ax)
+    
 
 ########## Grafica dinamica
 
