@@ -166,7 +166,7 @@ if con > 1:
 ####### ISOLATION FOREST
 
 from sklearn.ensemble import IsolationForest
-else:
+if con == 1:
 
     #Ac = db.iloc[:, [1]]
     #H2 = db.iloc[:, [2]]
