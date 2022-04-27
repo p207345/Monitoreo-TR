@@ -211,7 +211,7 @@ if con == 1:
     st.write(CO)
     st.write(w)
 
-    if CO.iloc[0, [0]]==3:
+    if CO.columns[0]==3:
         st.write("yes")
 # visualization
     fig4, ax = plt.subplots(figsize=(10,6))
