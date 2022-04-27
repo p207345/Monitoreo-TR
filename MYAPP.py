@@ -175,7 +175,7 @@ if con > 1:
     X_test.reset_index(inplace=True)
     fig2 = plt.figure(2)
     plt.plot(X_test.index,X_test.iloc[:, gases])
-    plt.vlines([indices],0,2,"r")
+    plt.vlines([indices],0,np.max(X_test),"r")
     plt.xlabel('Date Time')
     plt.ylabel('Gases')
     plt.show();
