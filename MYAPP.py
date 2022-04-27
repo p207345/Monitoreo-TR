@@ -208,6 +208,7 @@ if con == 1:
 
     CO['anomaly'] = model.predict(data)
     w = CO.columns.values.tolist()
+    st.write(CO)
     st.write(w)
 
     if CO.iloc[0, [0]]==3:
