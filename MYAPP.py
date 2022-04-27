@@ -174,7 +174,7 @@ if con > 1:
     X_test = db[round((len(db)/3)*2):]
     X_test.reset_index(inplace=True)
     st.write(X_test)
-    X_test.drop([0],axis=1,inplace=True)
+    X_test.drop(["index"],axis=1,inplace=True)
     fig2 = plt.figure(2)
     plt.plot(X_test.index,X_test.iloc[:, gases])
     plt.vlines([indices],0,X_test.max().max(),"r")
