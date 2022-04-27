@@ -207,7 +207,7 @@ if con == 1:
     model.fit(data)
 
     CO['anomaly'] = model.predict(data)
-    st.write(CO)
+    st.write(CO.columns)
 
     if CO.header["0"]==3:
         st.write("yes")
