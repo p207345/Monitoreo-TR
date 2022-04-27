@@ -199,7 +199,7 @@ if con == 1:
     #Me = db.iloc[:, [6]]
 
 #Monoxido de carbono
-    outliers_fraction = float(.15)
+    outliers_fraction = float(.01)
     scaler = StandardScaler()
     np_scaled = scaler.fit_transform(CO.values.reshape(-1, 1))
     data = pd.DataFrame(CO.iloc[:, [0]])
