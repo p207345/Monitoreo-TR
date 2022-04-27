@@ -190,16 +190,10 @@ if con >= 2:
 
 from sklearn.ensemble import IsolationForest
 if con == 1:
-
-    #Ac = db.iloc[:, [1]]
-    #H2 = db.iloc[:, [2]]
-    #Et = db.iloc[:, [3]]
     CO = db.iloc[:, [0]]
-    #Eta = db.iloc[:, [5]]
-    #Me = db.iloc[:, [6]]
 
-#Monoxido de carbono
-    outliers_fraction = float(.01)
+#Parámetros
+    outliers_fraction = float(.1)
     scaler = StandardScaler()
     np_scaled = scaler.fit_transform(CO.values.reshape(-1, 1))
     data = pd.DataFrame(CO.iloc[:, [0]])
@@ -207,9 +201,6 @@ if con == 1:
     model.fit(data)
 
     CO['anomaly'] = model.predict(data)
-    w = CO.columns.values.tolist()
-    st.write(CO)
-    st.write(w)
 
     if CO.columns[0]==1:
         fig4, ax = plt.subplots(figsize=(10,6))
