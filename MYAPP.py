@@ -105,6 +105,7 @@ st.write(fig)
 #### AUTOENCODER
 from pyod.models.auto_encoder import AutoEncoder
 from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
 
 if con > 1:
 
@@ -133,14 +134,10 @@ if con > 1:
 # Predict the anomaly scores
     y_test_scores = clf.decision_function(X_test)  # outlier scores
     y_test_scores = pd.Series(y_test_scores)
-
-import matplotlib.pyplot as plt
-
     fig3 = plt.figure(figsize=(10,4))   
     plt.hist(y_test_scores, bins='auto')  
     plt.title("Histogram for Model Clf Anomaly Scores")
     plt.show();
-
     df_test = X_test.copy()
     df_test['score'] = y_test_scores
     df_test['cluster'] = np.where(df_test['score']<4, 0, 1)
@@ -150,18 +147,16 @@ import matplotlib.pyplot as plt
     indices = pd.DataFrame(np.where(y_test_scores > 1.5))
     X_test = db[round((len(db)/3)*2):]
     X_test.reset_index(inplace=True)
-
-
     fig2 = plt.figure(2)
     plt.plot(X_test.index,X_test.iloc[:, [1]])
     plt.vlines([indices],0,600,"r")
-#plt.xlim(400,600)
-#plt.ylim(400,600)
     plt.xlabel('Date Time')
     plt.ylabel('CO_CarbonMonoxide')
     plt.show();
     st.write(fig3)
     st.write(fig2)
+
+    
 
 ####### ISOLATION FOREST
 
