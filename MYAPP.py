@@ -84,7 +84,7 @@ if CH4:
     lista.append(f)
     con += 1
     b6 = 1
-st.write(con)
+    
 if len(lista)> 0:
 
     for i in lista:
