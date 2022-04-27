@@ -210,7 +210,7 @@ if con == 1:
     w = CO.columns.values.tolist()
     st.write(w)
 
-    if CO[0]==3:
+    if CO["0"]==3:
         st.write("yes")
 # visualization
     fig4, ax = plt.subplots(figsize=(10,6))
