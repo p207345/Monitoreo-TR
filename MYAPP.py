@@ -173,7 +173,6 @@ if con >= 2:
     indices = pd.DataFrame(np.where(y_test_scores > (t["score"].max()-.5)))
     X_test = db[round((len(db)/3)*2):]
     X_test.reset_index(inplace=True)
-    st.write(X_test)
     X_test.drop(["index"],axis=1,inplace=True)
     fig2 = plt.figure(2)
     plt.plot(X_test.index,X_test.iloc[:, gases])
