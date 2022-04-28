@@ -287,7 +287,7 @@ def animate(i):
     data = db
     x = data.index
     #x1 = data.iloc[:, [0]]
-    y1 = data.iloc[:, [0]]
+    #y1 = data.iloc[:, [0]]
     y2 = data.iloc[:, [1]]
     y3 = data.iloc[:, [2]]
     y4 = data.iloc[:, [3]]
@@ -347,12 +347,12 @@ def animate(i):
 
     
     plt.cla()
-    plt.plot(x1, y1, label='C2H2')
-    plt.plot(x1, y2, label='H2')
-    plt.plot(x1, y3, label='C2H4')
-    plt.plot(x1, y4, label='CO')
-    plt.plot(x1, y5, label='C2H6')
-    plt.plot(x1, y6, label='CH4')
+    #plt.plot(x1, y1, label='C2H2')
+    plt.plot(x, y2, label='H2')
+    plt.plot(x, y3, label='C2H4')
+    plt.plot(x, y4, label='CO')
+    plt.plot(x, y5, label='C2H6')
+    plt.plot(x, y6, label='CH4')
     plt.xticks(rotation=90)
     plt.vlines(rayas2,0,50,"r")
     plt.legend(loc='upper left')
