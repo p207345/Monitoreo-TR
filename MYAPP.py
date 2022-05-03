@@ -93,7 +93,7 @@ if len(lista)> 0:
     for i in lista:
         p = pd.merge(p,i,on = 0, how='outer')
     p.drop([0],inplace=True, axis=1)
-    st.write(p)
+    #st.write(p)
 
 
 ######### Reproduccion tiempo real
