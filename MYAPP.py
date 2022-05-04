@@ -111,6 +111,7 @@ if len(header) == 1:
 else:    
     
     q = p
+    st.write(q)
     q.columns = header
     q["Date"] = pd.to_datetime(q["Date"]).dt.strftime("%Y-%m-%d %H:%M:%S")
     gs = []
