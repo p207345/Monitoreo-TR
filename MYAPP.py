@@ -161,7 +161,7 @@ for i, row in p.iterrows():
 
 db = pd.DataFrame(db)
 st.write(db)
-db.drop([0],inplace=True, axis=1)
+db.drop(["Date"],inplace=True, axis=1)
 #st.write(db)
 #st.write(p)
 ############## Grafica
