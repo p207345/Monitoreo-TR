@@ -47,7 +47,7 @@ else:
 
 lista = []
 header = ["Date"]
-p = df["0"]
+p = df[0]
 con = 0
 b1 = 0
 b2 = 0
