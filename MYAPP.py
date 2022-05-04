@@ -112,9 +112,8 @@ if len(header) == 1:
     st.write("""### No hay gases seleccionados, por favor selecciona al menos uno para continuar""")
 else:    
     
-    q = p
+    q = p.copy()
     st.write(q)
-    st.write(p)
     q.columns = header
     q["Date"] = pd.to_datetime(q["Date"]).dt.strftime("%Y-%m-%d %H:%M:%S")
     gs = []
