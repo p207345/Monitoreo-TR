@@ -155,13 +155,13 @@ else:
 ######### Reproduccion tiempo real
 db = []
 #st.write(p)
-for i, row in p[1:].iterrows():
+for i, row in p.iterrows():
     #st.write(row)
     db.append(row)
     #time.sleep(1)
 
-db = pd.DataFrame(db,columns=gases)
-
+db = pd.DataFrame(db)
+st.write(db)
 db.drop(["Date"],inplace=True, axis=1)
 
 st.write(db)
