@@ -55,6 +55,7 @@ b3 = 0
 b4 = 0
 b5 = 0
 b6 = 0
+
 if C2H2:
     a = df[[0,1]]
     lista.append(a)
@@ -106,6 +107,7 @@ if len(lista)> 0:
         p = pd.merge(p,i,on = 0, how='outer')
     p.drop([0],inplace=True, axis=1)
     st.write(p)
+
 if len(header) == 1:
     st.write("""### No hay gases seleccionados, por favor selecciona al menos uno para continuar""")
 else:    
