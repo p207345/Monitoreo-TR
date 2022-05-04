@@ -157,6 +157,7 @@ db = []
 #st.write(p)
 p.drop([0],inplace=True, axis=1)
 st.write(p)
+
 for i, row in p.iterrows():
     #st.write(row)
     db.append(row)
