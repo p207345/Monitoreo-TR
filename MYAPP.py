@@ -160,7 +160,7 @@ for i, row in p[1:].iterrows():
     db.append(row)
     #time.sleep(1)
 
-db = pd.DataFrame(db)
+db = pd.DataFrame(db,header=None)
 
 db.drop(["Date"],inplace=True, axis=1)
 
@@ -195,7 +195,7 @@ elif con == 6:
 
 elif con == 0:
    st.write("Por favor escoge los gases a analizar")
-db.columns = gases
+#db.columns = gases
 if con >= 2:
 
     q["Anomalias"]=np.zeros(len(p))
