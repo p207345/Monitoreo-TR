@@ -155,6 +155,7 @@ else:
 ######### Reproduccion tiempo real
 db = []
 #st.write(p)
+p.drop([0],inplace=True, axis=1)
 for i, row in p.iterrows():
     #st.write(row)
     db.append(row)
@@ -162,7 +163,7 @@ for i, row in p.iterrows():
 
 db = pd.DataFrame(db)
 
-db.drop([0],inplace=True, axis=1)
+
 
 
 #st.write(p)
