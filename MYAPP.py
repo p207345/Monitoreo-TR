@@ -154,6 +154,7 @@ else:
 
 ######### Reproduccion tiempo real
 db = []
+st.write(p)
 for i, row in p.iterrows():
     #st.write(row)
     db.append(row)
