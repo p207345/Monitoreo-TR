@@ -250,7 +250,7 @@ if con >= 2:
     plt.show();
     st.write(fig3)
     st.write(fig2)
-    st.write(q)
+st.write(q)    
     
 
 ####### ISOLATION FOREST
