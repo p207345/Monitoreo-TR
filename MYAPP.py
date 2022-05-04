@@ -46,6 +46,7 @@ with st.sidebar:
     vent = st.slider("",1,len(df))
 
 lista = []
+header = ["Date"]
 p= df[0]
 con = 0
 b1 = 0
@@ -59,31 +60,42 @@ if C2H2:
     lista.append(a)
     con += 1
     b1 = 1
+    header.append("Acetileno")
+
 if H2:
     b = df[[0,2]]
     lista.append(b)
     con += 1
     b2 = 1
+    header.append("Hidrogeno")
+
 if C2H4:
     c = df[[0,3]]
     lista.append(c)
     con += 1
     b3 = 1
+    header.append("Etileno")
+
 if CO:
     d = df[[0,4]]
     lista.append(d)
     con += 1
     b4 = 1
+    header.append("Monóxido de carbono")
+
 if C2H6:
     e = df[[0,5]]
     lista.append(e)
     con += 1
     b5 = 1
+    header.append("Etano")
+
 if CH4:
     f = df[[0,6]]
     lista.append(f)
     con += 1
     b6 = 1
+    header.append("Metano")
 
 if C2H2== False |H2 == False | C2H4 == False |CO == False |C2H6 ==False |CH4 == False:
    p="""### No hay gases seleccionados, por favor selecciona al menos uno"""
