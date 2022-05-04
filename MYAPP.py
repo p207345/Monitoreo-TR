@@ -202,7 +202,6 @@ elif con == 0:
 q["Anomalias"]=np.zeros(len(p))
 if con >= 2:
 
-    
     X_train = db[0:round((len(db)/3)*2)]
     X_test = db[round((len(db)/3)*2):]
     n_features = con #para gases
