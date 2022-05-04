@@ -239,9 +239,8 @@ if con >= 2:
     t = df_test.groupby('cluster').mean()
     indices = pd.DataFrame(np.where(y_test_scores > (t["score"].max()-.5)))
     st.write(indices)
-    for i in indices:
-        st.write("HOLA")
-        q["Anomalias"][i]=-1
+    for i, j  in indices.iteritems():
+        q["Anomalias"][j]=-1
     X_test = db[round((len(db)/3)*2):]
     X_test.reset_index(inplace=True)
     X_test.drop(["index"],axis=1,inplace=True)
