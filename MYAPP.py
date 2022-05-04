@@ -158,7 +158,8 @@ for i, row in p.iterrows():
     #st.write(row)
     db.append(row)
     #time.sleep(1)
-db.drop([0],inplace=True, axis=1)
+st.write(db)
+db.drop([],inplace=True, axis=1)
 db = pd.DataFrame(db)
 
 #st.write(db)
