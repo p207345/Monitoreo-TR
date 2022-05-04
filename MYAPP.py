@@ -154,15 +154,15 @@ else:
 
 ######### Reproduccion tiempo real
 db = []
-st.write(p)
-for i, row in p.iterrows():
+#st.write(p)
+for i, row in p[1:].iterrows():
     #st.write(row)
     db.append(row)
     #time.sleep(1)
 
 db = pd.DataFrame(db)
 
-db.drop(["Date"],inplace=True, axis=1)
+#db.drop(["Date"],inplace=True, axis=1)
 
 #st.write(db)
 #st.write(p)
