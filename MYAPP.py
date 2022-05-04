@@ -160,7 +160,7 @@ for i, row in p[1:].iterrows():
     db.append(row)
     #time.sleep(1)
 
-db = pd.DataFrame(db,header=False)
+db = pd.DataFrame(db,columns=None)
 
 db.drop(["Date"],inplace=True, axis=1)
 
