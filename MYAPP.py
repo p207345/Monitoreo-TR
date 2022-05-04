@@ -114,6 +114,7 @@ else:
     
     q = p
     st.write(q)
+    st.write(p)
     q.columns = header
     q["Date"] = pd.to_datetime(q["Date"]).dt.strftime("%Y-%m-%d %H:%M:%S")
     gs = []
@@ -160,7 +161,7 @@ for i, row in p[1:].iterrows():
     db.append(row)
     #time.sleep(1)
 
-db = pd.DataFrame(db,header=None, skiprows=1)
+db = pd.DataFrame(db,columns=gases)
 
 db.drop(["Date"],inplace=True, axis=1)
 
