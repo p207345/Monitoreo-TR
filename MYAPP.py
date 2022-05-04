@@ -199,7 +199,7 @@ elif con == 6:
 elif con == 0:
    st.write("Por favor escoge los gases a analizar")
 #db.columns = gases
-q["Anomalias"]=np.zeros(len(p))
+q["Anomalias"]=np.ones(len(p))
 if con >= 2:
 
     X_train = db[0:round((len(db)/3)*2)]
@@ -241,7 +241,7 @@ if con >= 2:
     st.write(indices)
     for i in indices:
         st.write("HOLA")
-        q["Anomalias"][i]=1
+        q["Anomalias"][i]=-1
     X_test = db[round((len(db)/3)*2):]
     X_test.reset_index(inplace=True)
     X_test.drop(["index"],axis=1,inplace=True)
