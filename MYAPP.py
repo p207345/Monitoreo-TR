@@ -164,7 +164,7 @@ db = pd.DataFrame(db)
 
 db.drop(["Date"],inplace=True, axis=1)
 
-#st.write(db)
+st.write(db)
 #st.write(p)
 ############## Grafica
 fig = px.line(db)#,animation_frame="index",animation_group=db)
