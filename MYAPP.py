@@ -161,10 +161,10 @@ for i, row in p.iterrows():
     #time.sleep(1)
 
 db = pd.DataFrame(db)
-st.write(db)
+
 db.drop([0],inplace=True, axis=1)
 
-st.write(db)
+
 #st.write(p)
 ############## Grafica
 fig = px.line(db)#,animation_frame="index",animation_group=db)
@@ -247,7 +247,7 @@ if con >= 2:
     plt.show();
     st.write(fig3)
     st.write(fig2)
-
+    st.write(q)
     
 
 ####### ISOLATION FOREST
