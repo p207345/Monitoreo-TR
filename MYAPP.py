@@ -239,6 +239,7 @@ if con >= 2:
 
     t = df_test.groupby('cluster').mean()
     indices = pd.DataFrame(np.where(y_test_scores > (t["score"].max()-.5)))
+    st.write(indices)
     for i in indices:
         st.write("HOLA")
         q["Anomalias"][i]=1
