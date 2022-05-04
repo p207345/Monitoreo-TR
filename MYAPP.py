@@ -272,6 +272,7 @@ if con == 1:
     model.fit(data)
 
     CO['anomaly'] = model.predict(data)
+    q["Anomalias"] =model.predict(data)
 
     if CO.columns[0]==1:
         fig4, ax = plt.subplots(figsize=(10,6))
