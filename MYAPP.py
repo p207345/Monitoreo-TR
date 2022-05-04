@@ -98,7 +98,7 @@ if CH4:
     header.append("Metano")
 
 if C2H2== False |H2 == False | C2H4 == False |CO == False |C2H6 ==False |CH4 == False:
-   p="""### No hay gases seleccionados, por favor selecciona al menos uno"""
+   p=" "
 
 if len(lista)> 0:
 
@@ -106,7 +106,47 @@ if len(lista)> 0:
         p = pd.merge(p,i,on = 0, how='outer')
     p.drop([0],inplace=True, axis=1)
     #st.write(p)
+if len(header) == 1:
+    st.write("""### No hay gases seleccionados, por favor selecciona al menos uno para continuar""")
+else:    
+    q = p.copý()
+    q.columns = header
+    q["Date"] = pd.to_datetime(q["Date"]).dt.strftime("%Y-%m-%d %H:%M:%S")
+    gs = []
+    dat = []
+    va = []
+    c = 0
+    gr = pd.DataFrame()
+    for i in range(len(q)):
+        for k in range(len(header[1:])):
+            dat.append(q["Date"][i])
+        for k in header[1:]:
+            va.append(q[k][i])
+        for k in header[1:]:
+            gs.append(k)
+            
+    gr["Date"]=dat
+    gr["Gas"]= gs
+    gr["Valor"]= va
 
+
+    st.write(q)
+    st.write(gr)
+    if st.button("Simulación tiempo real"):
+        #st.write(len(q))
+        fig = px.bar(gr, x= "Gas", y= "Valor", color="Gas",
+        animation_frame= "Date", 
+        animation_group= "Gas")
+        fig.update_layout(width=800)
+        st.write(fig)
+
+    if st.button("Simulación tiempo real 2"):
+        #st.write(len(q))
+        fig = px.bar(q, x= "Gas", y= "Valor", color="Gas",
+        animation_frame= "Date", 
+        animation_group= "Gas")
+        fig.update_layout(width=800)
+        st.write(fig)
 
 ######### Reproduccion tiempo real
 db = []
@@ -149,6 +189,7 @@ elif con == 0:
 
 if con >= 2:
 
+    q["Anomalias"]=np.zeros(len(p))
     X_train = db[0:round((len(db)/3)*2)]
     X_test = db[round((len(db)/3)*2):]
     n_features = con #para gases
@@ -185,6 +226,7 @@ if con >= 2:
 
     t = df_test.groupby('cluster').mean()
     indices = pd.DataFrame(np.where(y_test_scores > (t["score"].max()-.5)))
+    q["Anomalias"][indices]=1
     X_test = db[round((len(db)/3)*2):]
     X_test.reset_index(inplace=True)
     X_test.drop(["index"],axis=1,inplace=True)
