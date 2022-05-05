@@ -48,11 +48,7 @@ else:
     st.write("""# Has seleccionado planta 3""")
     df = pd.read_csv('https://raw.githubusercontent.com/IgnacioRodriguez98/Monitoreo-TR/main/Data/planta1.csv', header=None)
     st.write(df)
-##################### SELECCION DE GASES ######################
 
-#with st.sidebar:
-#   st.write("# Selecciona el tamaño de la ventana:")
-#    vent= st.slider("",1,len(df))
 
 lista = []
 header = ["Date"]
