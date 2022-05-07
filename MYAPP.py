@@ -112,7 +112,7 @@ else:
     db = pd.DataFrame(db)
 
     ############## Grafica
-    fig = px.line(db)
+    fig = px.line(db,x="Time", y= "Gas")
     st.write(fig)
 
     #### AUTOENCODER
