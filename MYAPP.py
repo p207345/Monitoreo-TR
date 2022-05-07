@@ -112,7 +112,8 @@ else:
     db = pd.DataFrame(db)
 
     ############## Grafica
-    fig = px.line(q)#,labels={"1":"C2H2",2:H2,3:C2H4,4:CO,5:C2H6,6:CH4})
+    fig = px.line(db,labels={"1":"C2H2",2:H2,3:C2H4,4:CO,5:C2H6,6:CH4})
+    fig.update_layout()
     st.write(fig)
 
     #### AUTOENCODER
