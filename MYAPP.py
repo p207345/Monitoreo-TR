@@ -2,7 +2,7 @@ import plotly.express as px
 import matplotlib.pyplot as plt
 import streamlit as st
 import pandas as pd
-import time
+#import time
 import numpy as np
 from sklearn.ensemble import IsolationForest
 from pyod.models.auto_encoder import AutoEncoder
