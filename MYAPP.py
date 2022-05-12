@@ -120,7 +120,7 @@ if option == "Español":
     entre 3 bases de datos disponibles; Estas corresponden a una planta distinta y están ordenadas conforme a su número de datos.
     Ojo: Tener en cuenta que mientras más grande sea la base de datos mayor será el tiempo de ejecución. """)
 
-    st.write("""# 2nd Paso: Selección de gases""")
+    st.write("""# 2do Paso: Selección de gases""")
 
     st.write("""En el mismo menú del paso anterior se encuentra el apartado "Gases", en donde encontrará checkbox para seleccionar los gases que monitorearemos..
     Ojo: A mayor número de gases mayor será el tiempo de ejecución. """)
